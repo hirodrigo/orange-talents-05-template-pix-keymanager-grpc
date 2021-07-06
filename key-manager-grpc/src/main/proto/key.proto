@@ -7,8 +7,12 @@ option objc_class_prefix = "HLW";
 
 package br.com.zup;
 
-service KeyService {
-  rpc cadastrar(KeyRequest) returns (KeyResponse){}
+service KeyManagerRegistraService {
+  rpc cadastrar(RegistraChavePixRequest) returns (RegistraChavePixResponse){}
+}
+
+service KeyManagerRemoveService {
+  rpc remove(RemoveChavePixRequest) returns (RemoveChavePixResponse){}
 }
 
 enum TipoChave{
@@ -25,13 +29,22 @@ enum TipoConta{
   CONTA_POUPANCA = 2;
 }
 
-message KeyRequest{
+message RegistraChavePixRequest{
   string clienteId = 1;
   TipoChave tipoChave = 2;
   string chave = 3;
   TipoConta tipoConta = 4;
 }
 
-message KeyResponse{
+message RegistraChavePixResponse{
+  string pixId = 1;
+}
+
+message RemoveChavePixRequest{
+  string clienteId = 1;
+  string pixId = 2;
+}
+
+message RemoveChavePixResponse{
   string pixId = 1;
 }

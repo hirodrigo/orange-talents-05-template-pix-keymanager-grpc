@@ -1,9 +1,9 @@
 package br.com.zup.pix.registra
 
 import br.com.zup.integracao.itau.ItauContasClient
+import br.com.zup.pix.ChavePixRepository
 import io.micronaut.validation.Validated
 import org.slf4j.LoggerFactory
-import java.lang.IllegalStateException
 import javax.inject.Inject
 import javax.inject.Singleton
 import javax.transaction.Transactional

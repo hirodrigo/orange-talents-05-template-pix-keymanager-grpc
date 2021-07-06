@@ -1,11 +1,13 @@
 package br.com.zup.pix.registra
 
-import br.com.zup.KeyRequest
-import br.com.zup.KeyServiceGrpc
+import br.com.zup.KeyManagerRegistraServiceGrpc
+import br.com.zup.RegistraChavePixRequest
 import br.com.zup.TipoChave.*
-import br.com.zup.TipoConta.*
+import br.com.zup.TipoConta.CONTA_CORRENTE
+import br.com.zup.TipoConta.CONTA_POUPANCA
 import br.com.zup.integracao.itau.DadosContaResponse
 import br.com.zup.integracao.itau.ItauContasClient
+import br.com.zup.pix.ChavePixRepository
 import io.grpc.Channel
 import io.grpc.Status
 import io.grpc.StatusRuntimeException
@@ -27,7 +29,7 @@ import javax.inject.Singleton
 @MicronautTest(transactional = false)
 internal class RegistraChaveEndpointTest(
     val chavePixRepository: ChavePixRepository,
-    val grpcClient: KeyServiceGrpc.KeyServiceBlockingStub
+    val grpcClient: KeyManagerRegistraServiceGrpc.KeyManagerRegistraServiceBlockingStub
 ) {
 
     @field:Inject
@@ -36,8 +38,8 @@ internal class RegistraChaveEndpointTest(
     @Factory
     class Clients {
         @Singleton
-        fun blockingStubs(@GrpcChannel(GrpcServerChannel.NAME) channel: Channel): KeyServiceGrpc.KeyServiceBlockingStub {
-            return KeyServiceGrpc.newBlockingStub(channel)
+        fun blockingStubs(@GrpcChannel(GrpcServerChannel.NAME) channel: Channel): KeyManagerRegistraServiceGrpc.KeyManagerRegistraServiceBlockingStub {
+            return KeyManagerRegistraServiceGrpc.newBlockingStub(channel)
         }
     }
 
@@ -54,7 +56,7 @@ internal class RegistraChaveEndpointTest(
     @Test
     fun `deve adicionar uma nova chave pix por celular para conta corrente`() {
 
-        val request = KeyRequest.newBuilder()
+        val request = RegistraChavePixRequest.newBuilder()
             .setClienteId("c56dfef4-7901-44fb-84e2-a2cefb157890")
             .setTipoChave(CELULAR)
             .setChave("+5511997324364")
@@ -90,7 +92,7 @@ internal class RegistraChaveEndpointTest(
     @Test
     fun `deve adicionar uma nova chave pix aleatoria para conta poupanca`() {
 
-        val request = KeyRequest.newBuilder()
+        val request = RegistraChavePixRequest.newBuilder()
             .setClienteId("2ac09233-21b2-4276-84fb-d83dbd9f8bab")
             .setTipoChave(ALEATORIA)
             .setTipoConta(CONTA_POUPANCA)
@@ -125,7 +127,7 @@ internal class RegistraChaveEndpointTest(
     @Test
     fun `deve adicionar uma nova chave pix por cpf`() {
 
-        val request = KeyRequest.newBuilder()
+        val request = RegistraChavePixRequest.newBuilder()
             .setClienteId("c56dfef4-7901-44fb-84e2-a2cefb157890")
             .setTipoChave(CPF)
             .setChave("02467781054")
@@ -161,7 +163,7 @@ internal class RegistraChaveEndpointTest(
     @Test
     fun `deve adicionar uma nova chave pix por email`() {
 
-        val request = KeyRequest.newBuilder()
+        val request = RegistraChavePixRequest.newBuilder()
             .setClienteId("2ac09233-21b2-4276-84fb-d83dbd9f8bab")
             .setTipoChave(EMAIL)
             .setChave("teste@email.com")
@@ -220,7 +222,7 @@ internal class RegistraChaveEndpointTest(
 
         chavePixRepository.save(chaveExistente)
 
-        val request = KeyRequest.newBuilder()
+        val request = RegistraChavePixRequest.newBuilder()
             .setClienteId("2ac09233-21b2-4276-84fb-d83dbd9f8bab")
             .setTipoChave(EMAIL)
             .setChave("teste@email.com")
@@ -240,7 +242,7 @@ internal class RegistraChaveEndpointTest(
     @Test
     fun `nao deve adicionar uma nova chave pix com dados de entrada invalidos`() {
 
-        val request = KeyRequest.newBuilder()
+        val request = RegistraChavePixRequest.newBuilder()
             .setClienteId("abcd")
             .setTipoChave(CELULAR)
             .setChave("wxyz")
@@ -261,7 +263,7 @@ internal class RegistraChaveEndpointTest(
     @Test
     fun `nao deve adicionar uma nova chave pix com chave invalida`() {
 
-        val request = KeyRequest.newBuilder()
+        val request = RegistraChavePixRequest.newBuilder()
             .setClienteId("2ac09233-21b2-4276-84fb-d83dbd9f8bab")
             .setTipoChave(EMAIL)
             .setChave("claramente nao é um e-mail :D")

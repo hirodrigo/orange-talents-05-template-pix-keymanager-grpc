@@ -1,5 +1,6 @@
 package br.com.zup.pix.registra
 
+import br.com.zup.pix.ValidUUID
 import java.util.*
 import javax.persistence.Column
 import javax.persistence.Embeddable

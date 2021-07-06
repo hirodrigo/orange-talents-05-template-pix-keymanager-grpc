@@ -1,4 +1,4 @@
-package br.com.zup.pix.registra
+package br.com.zup.pix
 
 import javax.validation.constraints.Pattern
 import kotlin.annotation.AnnotationRetention.RUNTIME

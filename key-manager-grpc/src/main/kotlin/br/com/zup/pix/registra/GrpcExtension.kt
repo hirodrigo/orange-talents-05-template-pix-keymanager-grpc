@@ -1,10 +1,10 @@
 package br.com.zup.pix.registra
 
-import br.com.zup.KeyRequest
+import br.com.zup.RegistraChavePixRequest
 import br.com.zup.TipoChave.*
 import br.com.zup.TipoConta.*
 
-fun KeyRequest.paraNovaChavePix(): NovaChavePix {
+fun RegistraChavePixRequest.paraNovaChavePix(): NovaChavePix {
     return NovaChavePix(
         clienteId = this.clienteId,
         tipoChave = when (this.tipoChave) {
