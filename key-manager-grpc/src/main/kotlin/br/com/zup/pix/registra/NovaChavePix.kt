@@ -1,6 +1,6 @@
 package br.com.zup.pix.registra
 
-import br.com.zup.pix.ValidUUID
+import br.com.zup.shared.validation.ValidUUID
 import io.micronaut.core.annotation.Introspected
 import java.util.*
 import javax.validation.constraints.NotBlank

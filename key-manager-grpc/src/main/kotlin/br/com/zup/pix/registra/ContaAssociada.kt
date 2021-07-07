@@ -1,6 +1,6 @@
 package br.com.zup.pix.registra
 
-import br.com.zup.pix.ValidUUID
+import br.com.zup.shared.validation.ValidUUID
 import java.util.*
 import javax.persistence.Column
 import javax.persistence.Embeddable
@@ -16,6 +16,11 @@ class ContaAssociada(
     @field:NotNull @Column(nullable = false) val numero: String,
     @field:Valid @Embedded val titular: Titular
 ) {
+
+    companion object {
+        const val ITAU_UNIBANCO_ISBP = "60701190"
+    }
+
     @Embeddable
     class Instituicao(
         @field:NotNull @Column(nullable = false) val nomeInstituicao: String,

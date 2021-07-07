@@ -1,4 +1,4 @@
-package br.com.zup.pix
+package br.com.zup.shared.validation
 
 import javax.validation.constraints.Pattern
 import kotlin.annotation.AnnotationRetention.RUNTIME
