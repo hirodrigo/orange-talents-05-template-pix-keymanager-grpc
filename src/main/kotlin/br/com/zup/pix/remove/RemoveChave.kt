@@ -40,7 +40,7 @@ class RemoveChave(
         )
 
         if (bcbResponse.status != HttpStatus.OK) {
-            throw IllegalStateException("Falha ao cadastrar chave no Banco Central")
+            throw IllegalStateException("Falha ao remover chave no Banco Central")
         }
 
         chavePixRepository.delete(chavePix)

@@ -24,7 +24,8 @@ class ExceptionHandlerInterceptor(@Inject private val resolver: ExceptionHandler
                         "while processing the call: ${context.targetMethod}"
             )
 
-            val handler = resolver.resolve(e)
+            @Suppress("UNCHECKED_CAST")
+            val handler = resolver.resolve(e) as ExceptionHandler<Exception>
             val status = handler.handle(e)
 
             GrpcEndpointArguments(context)

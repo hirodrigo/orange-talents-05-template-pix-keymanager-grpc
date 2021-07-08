@@ -34,9 +34,11 @@ class ChavePix(
         return this.tipoChave == TipoChave.ALEATORIA
     }
 
-    fun atualizaChave(chaveGerada: String) {
+    fun atualizaChave(novaChave: String): Boolean {
         if (isChaveAleatoria()) {
-            chave = chaveGerada
+            this.chave = novaChave
+            return true
         }
+        return false
     }
 }
