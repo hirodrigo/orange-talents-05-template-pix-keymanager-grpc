@@ -36,8 +36,8 @@ data class ChavePixInfo(
 
     fun toConsultaChavePixResponse(): ConsultaChavePixResponse {
         return ConsultaChavePixResponse.newBuilder()
-            .setClienteId(this.clienteId.toString() ?: "")
-            .setPixId(this.pixId.toString() ?: "")
+            .setClienteId(this.clienteId?.toString() ?: "")
+            .setPixId(this.pixId?.toString() ?: "")
             .setChave(
                 ConsultaChavePixResponse.ChavePix.newBuilder()
                     .setTipo(br.com.zup.TipoChave.valueOf(this.tipoChave.name))

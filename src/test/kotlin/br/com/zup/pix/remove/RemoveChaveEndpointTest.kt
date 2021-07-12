@@ -6,7 +6,7 @@ import br.com.zup.integracao.bcb.BCBPixClient
 import br.com.zup.integracao.bcb.DeletePixKeyRequest
 import br.com.zup.integracao.bcb.DeletePixKeyResponse
 import br.com.zup.pix.*
-import br.com.zup.pix.registra.*
+import br.com.zup.pix.registra.RegistraChaveEndpointTest
 import com.google.rpc.BadRequest
 import io.grpc.Channel
 import io.grpc.Status
@@ -149,22 +149,8 @@ internal class RemoveChaveEndpointTest(
             assertEquals(Status.INVALID_ARGUMENT.code, status.code)
             assertEquals("Dados inválidos", status.description)
             val violations = getViolations(this)
-            assertTrue(
-                violations.contains(
-                    Pair(
-                        "pixId",
-                        "must match \"^[0-9a-f]{8}-[0-9a-f]{4}-[1-5][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}\$\""
-                    )
-                )
-            )
-            assertTrue(
-                violations.contains(
-                    Pair(
-                        "clienteId",
-                        "must match \"^[0-9a-f]{8}-[0-9a-f]{4}-[1-5][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}\$\""
-                    )
-                )
-            )
+            assertTrue(violations.contains(Pair("clienteId", "Não é um formato válido de UUID")))
+            assertTrue(violations.contains(Pair("pixId", "Não é um formato válido de UUID")))
         }
     }
 

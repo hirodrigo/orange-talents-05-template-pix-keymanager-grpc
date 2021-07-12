@@ -37,6 +37,7 @@ dependencies {
     runtimeOnly("ch.qos.logback:logback-classic")
     runtimeOnly("com.h2database:h2")
 
+    implementation("io.micronaut.beanvalidation:micronaut-hibernate-validator")
     implementation("org.hibernate:hibernate-validator:6.1.6.Final")
 
     runtimeOnly("com.fasterxml.jackson.module:jackson-module-kotlin")
@@ -46,6 +47,7 @@ dependencies {
 
     testImplementation("org.mockito:mockito-core:3.8.0")
     testImplementation("org.mockito:mockito-junit-jupiter:3.8.0")
+    testImplementation("org.junit.jupiter:junit-jupiter-api")
 }
 
 

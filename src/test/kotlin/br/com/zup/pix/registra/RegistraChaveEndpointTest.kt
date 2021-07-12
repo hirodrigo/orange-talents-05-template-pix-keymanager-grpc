@@ -144,9 +144,8 @@ internal class RegistraChaveEndpointTest(
             assertEquals(Status.INVALID_ARGUMENT.code, status.code)
             assertEquals("Dados inválidos", status.description)
             val violations = getViolations(this)
-            assertTrue(violations.contains(Pair("tipoConta", "must not be null")))
-            assertTrue(violations.contains(Pair("clienteId", "must match \"^[0-9a-f]{8}-[0-9a-f]{4}-[1-5][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}\$\"")))
-            assertTrue(violations.contains(Pair("novaChave", "Chave Pix inválida")))
+            assertTrue(violations.contains(Pair("tipoConta", "não deve ser nulo")))
+            assertTrue(violations.contains(Pair("chave", "Chave Pix inválida (CELULAR)")))
         }
     }
 
@@ -168,7 +167,7 @@ internal class RegistraChaveEndpointTest(
             assertEquals(Status.INVALID_ARGUMENT.code, status.code)
             assertEquals("Dados inválidos", status.description)
             val violations = getViolations(this)
-            assertTrue(violations.contains(Pair("novaChave", "Chave Pix inválida")))
+            assertTrue(violations.contains(Pair("chave", "Chave Pix inválida (EMAIL)")))
         }
     }
 
