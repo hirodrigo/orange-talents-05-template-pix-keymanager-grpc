@@ -1,5 +1,6 @@
 package br.com.zup.pix.registra
 
+import br.com.zup.pix.TipoChave
 import org.junit.jupiter.api.Assertions.*
 import org.junit.jupiter.api.Nested
 import org.junit.jupiter.api.Test

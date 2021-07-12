@@ -3,6 +3,7 @@ package br.com.zup.pix.registra
 import br.com.zup.integracao.bcb.BCBPixClient
 import br.com.zup.integracao.bcb.CreatePixKeyRequest
 import br.com.zup.integracao.itau.ItauContasClient
+import br.com.zup.pix.ChavePix
 import br.com.zup.pix.ChavePixRepository
 import io.micronaut.http.HttpStatus
 import io.micronaut.validation.Validated

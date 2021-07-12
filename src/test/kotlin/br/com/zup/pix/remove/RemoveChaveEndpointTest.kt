@@ -5,7 +5,7 @@ import br.com.zup.RemoveChavePixRequest
 import br.com.zup.integracao.bcb.BCBPixClient
 import br.com.zup.integracao.bcb.DeletePixKeyRequest
 import br.com.zup.integracao.bcb.DeletePixKeyResponse
-import br.com.zup.pix.ChavePixRepository
+import br.com.zup.pix.*
 import br.com.zup.pix.registra.*
 import com.google.rpc.BadRequest
 import io.grpc.Channel

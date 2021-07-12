@@ -1,5 +1,9 @@
 package br.com.zup.pix.registra
 
+import br.com.zup.pix.ChavePix
+import br.com.zup.pix.ContaAssociada
+import br.com.zup.pix.TipoChave
+import br.com.zup.pix.TipoConta
 import org.junit.jupiter.api.Assertions.assertFalse
 import org.junit.jupiter.api.Assertions.assertTrue
 import org.junit.jupiter.api.Test

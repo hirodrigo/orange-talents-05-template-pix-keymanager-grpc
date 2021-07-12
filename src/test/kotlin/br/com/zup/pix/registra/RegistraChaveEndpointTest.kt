@@ -9,7 +9,7 @@ import br.com.zup.TipoConta.CONTA_POUPANCA
 import br.com.zup.integracao.bcb.*
 import br.com.zup.integracao.itau.DadosContaResponse
 import br.com.zup.integracao.itau.ItauContasClient
-import br.com.zup.pix.ChavePixRepository
+import br.com.zup.pix.*
 import com.google.rpc.BadRequest
 import io.grpc.Channel
 import io.grpc.Status
@@ -298,7 +298,7 @@ internal class RegistraChaveEndpointTest(
             participant = "60701190",
             branch = "0001",
             accountNumber = "291900",
-            accountType = BankAccount.AccountType.CACC
+            accountType = AccountType.CACC
         )
     }
 

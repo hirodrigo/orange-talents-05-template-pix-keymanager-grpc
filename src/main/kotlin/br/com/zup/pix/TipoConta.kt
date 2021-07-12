@@ -1,4 +1,4 @@
-package br.com.zup.pix.registra
+package br.com.zup.pix
 
 enum class TipoConta {
     CONTA_CORRENTE,

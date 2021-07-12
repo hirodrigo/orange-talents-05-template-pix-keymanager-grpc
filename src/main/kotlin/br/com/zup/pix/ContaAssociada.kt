@@ -1,4 +1,4 @@
-package br.com.zup.pix.registra
+package br.com.zup.pix
 
 import br.com.zup.shared.validation.ValidUUID
 import java.util.*

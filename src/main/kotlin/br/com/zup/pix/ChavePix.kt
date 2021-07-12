@@ -1,4 +1,4 @@
-package br.com.zup.pix.registra
+package br.com.zup.pix
 
 import java.time.LocalDateTime
 import java.util.*
@@ -40,5 +40,9 @@ class ChavePix(
             return true
         }
         return false
+    }
+
+    fun pertenceAo(clienteId: UUID): Boolean {
+        return this.clienteId == clienteId
     }
 }

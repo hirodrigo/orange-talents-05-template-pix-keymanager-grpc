@@ -3,7 +3,7 @@ package br.com.zup.pix.remove
 import br.com.zup.integracao.bcb.BCBPixClient
 import br.com.zup.integracao.bcb.DeletePixKeyRequest
 import br.com.zup.pix.ChavePixRepository
-import br.com.zup.pix.registra.ChavePix
+import br.com.zup.pix.ChavePix
 import io.micronaut.http.HttpStatus
 import io.micronaut.validation.Validated
 import org.slf4j.LoggerFactory

@@ -3,6 +3,8 @@ package br.com.zup.pix.registra
 import br.com.zup.RegistraChavePixRequest
 import br.com.zup.TipoChave.*
 import br.com.zup.TipoConta.*
+import br.com.zup.pix.TipoChave
+import br.com.zup.pix.TipoConta
 
 fun RegistraChavePixRequest.paraNovaChavePix(): NovaChavePix {
     return NovaChavePix(

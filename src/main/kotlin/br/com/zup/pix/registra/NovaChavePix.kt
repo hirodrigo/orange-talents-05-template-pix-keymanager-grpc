@@ -1,5 +1,9 @@
 package br.com.zup.pix.registra
 
+import br.com.zup.pix.ChavePix
+import br.com.zup.pix.ContaAssociada
+import br.com.zup.pix.TipoChave
+import br.com.zup.pix.TipoConta
 import br.com.zup.shared.validation.ValidUUID
 import io.micronaut.core.annotation.Introspected
 import java.util.*

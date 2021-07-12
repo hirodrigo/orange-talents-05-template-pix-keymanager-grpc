@@ -1,9 +1,9 @@
 package br.com.zup.integracao.bcb
 
-import br.com.zup.pix.registra.ChavePix
-import br.com.zup.pix.registra.ContaAssociada
-import br.com.zup.pix.registra.TipoChave
-import br.com.zup.pix.registra.TipoConta
+import br.com.zup.pix.ChavePix
+import br.com.zup.pix.ContaAssociada
+import br.com.zup.pix.TipoChave
+import br.com.zup.pix.TipoConta
 import java.time.LocalDateTime
 
 data class CreatePixKeyRequest(
@@ -22,7 +22,7 @@ data class CreatePixKeyRequest(
                     participant = ContaAssociada.ITAU_UNIBANCO_ISBP,
                     branch = chavePix.conta.agencia,
                     accountNumber = chavePix.conta.numero,
-                    accountType = BankAccount.AccountType.by(chavePix.tipoConta),
+                    accountType = AccountType.by(chavePix.tipoConta),
                 ),
                 owner = Owner(
                     type = Owner.OwnerType.NATURAL_PERSON,
@@ -33,7 +33,6 @@ data class CreatePixKeyRequest(
             )
         }
     }
-
 
 }
 
@@ -62,6 +61,16 @@ enum class PixKeyType {
             }
         }
     }
+
+    fun domainType(): TipoChave? {
+        return when (this) {
+            CPF -> TipoChave.CPF
+            PHONE -> TipoChave.CELULAR
+            EMAIL -> TipoChave.EMAIL
+            RANDOM -> TipoChave.ALEATORIA
+            CNPJ -> null
+        }
+    }
 }
 
 data class BankAccount(
@@ -69,21 +78,29 @@ data class BankAccount(
     val branch: String,
     val accountNumber: String,
     val accountType: AccountType
-) {
-    enum class AccountType {
-        CACC,
-        SVGS;
+)
 
-        companion object {
-            fun by(tipoConta: TipoConta): AccountType {
-                return when (tipoConta) {
-                    TipoConta.CONTA_POUPANCA -> SVGS
-                    TipoConta.CONTA_CORRENTE -> CACC
-                }
+enum class AccountType {
+    CACC,
+    SVGS;
+
+    companion object {
+        fun by(tipoConta: TipoConta): AccountType {
+            return when (tipoConta) {
+                TipoConta.CONTA_POUPANCA -> SVGS
+                TipoConta.CONTA_CORRENTE -> CACC
             }
         }
     }
+
+    fun domainType(): TipoConta {
+        return when (this) {
+            SVGS -> TipoConta.CONTA_POUPANCA
+            CACC -> TipoConta.CONTA_CORRENTE
+        }
+    }
 }
+
 
 data class Owner(
     val type: OwnerType,

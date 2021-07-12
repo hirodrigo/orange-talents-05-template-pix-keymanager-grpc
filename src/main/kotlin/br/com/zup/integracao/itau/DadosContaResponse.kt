@@ -1,6 +1,6 @@
 package br.com.zup.integracao.itau
 
-import br.com.zup.pix.registra.ContaAssociada
+import br.com.zup.pix.ContaAssociada
 import io.micronaut.core.annotation.Introspected
 import java.util.*
 
