@@ -25,4 +25,4 @@ logger:
 
 itau:
   contas:
-    url: ${ITAU_CONTAS_URL:`http://localhost:9091/`}
+    url: ${ITAU_URL:`http://localhost:9091/`}
